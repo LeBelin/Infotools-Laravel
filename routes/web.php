@@ -31,9 +31,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::get('/dashboard', [CommunController::class, 'index'])->name('dashboard');
     Route::get('/commun', function () {
         return view('commun.index');
     })->name('commun');

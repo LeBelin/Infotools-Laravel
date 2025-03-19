@@ -121,6 +121,13 @@ background : #F6E6D1;
 }
 </style>
 
+@if (Auth::check())
+    <h2>Bonjours, {{ Auth::user()->name }}</h2><br>
+@else
+    <h2>Bonjours, invité</h2><br>
+@endif
+
+
 <div id="main">
 
 <div class="w3-container w3-blue">
@@ -172,7 +179,10 @@ background : #F6E6D1;
 </div>
 
 <div class="st1-nav">
-    <a href="/index">Se deconnecter</a>
+<form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="text-blue-500 hover:text-blue-700">Se déconnecter</button>
+    </form>
 </div>
 
 </div>
